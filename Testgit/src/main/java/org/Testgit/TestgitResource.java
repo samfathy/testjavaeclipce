@@ -62,6 +62,7 @@ public class TestgitResource {
 		logger.info("Logging info message...");
 		int x = 0;
 		int y=0;
+		int z=0;
 		return "Hello from resource";
 	}
 
