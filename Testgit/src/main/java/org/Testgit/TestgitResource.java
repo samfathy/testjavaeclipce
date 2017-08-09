@@ -49,8 +49,8 @@ public class TestgitResource {
 	ConfigurationAPI configApi;
 
 	/*
-	 * Path for method:
-	 * "<server address>/mfp/api/adapters/Testgit/resource"
+	 * Path for method: "<server address>/mfp/api/adapters/Testgit/resource"
+	 * kdsfjlskfjlskfld
 	 */
 
 	@ApiOperation(value = "Returns 'Hello from resource'", notes = "A basic example of a resource returning a constant string.")
@@ -60,7 +60,7 @@ public class TestgitResource {
 	public String getResourceData() {
 		// log message to server log
 		logger.info("Logging info message...");
-
+		int x = 0;
 		return "Hello from resource";
 	}
 
@@ -85,7 +85,8 @@ public class TestgitResource {
 	 */
 
 	@ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "A JSON object containing all the received parameters returned.") })
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "A JSON object containing all the received parameters returned.") })
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{path}")
@@ -108,8 +109,7 @@ public class TestgitResource {
 	 */
 
 	@ApiOperation(value = "Configuration Example", notes = "Example usage of the configuration API. A property name is read from the query parameter, and the value corresponding to that property name is returned.")
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Property value returned."),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Property value returned."),
 			@ApiResponse(code = 404, message = "Property value not found.") })
 	@GET
 	@Path("/prop")
@@ -120,12 +120,9 @@ public class TestgitResource {
 		String value = configApi.getPropertyValue(propertyName);
 		if (value != null) {
 			// return the value:
-			return Response
-					.ok("The value of " + propertyName + " is: " + value)
-					.build();
+			return Response.ok("The value of " + propertyName + " is: " + value).build();
 		} else {
-			return Response.status(Status.NOT_FOUND)
-					.entity("No value for " + propertyName + ".").build();
+			return Response.status(Status.NOT_FOUND).entity("No value for " + propertyName + ".").build();
 		}
 
 	}
@@ -159,8 +156,5 @@ public class TestgitResource {
 	public String customScopeProtected() {
 		return "Hello from a resource protected by a custom scope!";
 	}
-
-
-
 
 }
